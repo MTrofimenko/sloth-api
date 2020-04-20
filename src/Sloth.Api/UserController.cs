@@ -16,7 +16,9 @@ namespace Sloth.Api
             _dbContext = dbContext;
         }
 
-        // GET
+        /// <summary>
+        /// Get all users  
+        /// </summary>
         [HttpGet]
         public async Task<User[]> Register()
         {

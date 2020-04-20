@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sloth.DB;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Sloth.Api
 {
@@ -20,12 +23,29 @@ namespace Sloth.Api
             services.AddCors();
             services.AddMvc();
             services.AddSlothDbContext(Configuration);
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Info() { Title = "Sloth API", Version = "v1" });
+                // options.DocumentFilter<SwaggerSecurityRequirementsDocumentFilter>(); TODO: enable it after authorization is done
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseForwardedHeaders();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sloth API");
+                c.RoutePrefix = string.Empty;
+            });
 
             if (env.IsDevelopment())
             {
