@@ -22,8 +22,8 @@ namespace Sloth.DB.Configuration
                 .IsRequired();
 
             builder
-                .Property(x => x.IsActive)
-                .HasColumnName("IsActive");
+                .Property(x => x.Status)
+                .HasColumnName("Status");
 
             builder
                 .Property(x => x.LogoId)

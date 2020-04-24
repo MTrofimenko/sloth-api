@@ -6,8 +6,8 @@ namespace Sloth.DB.Models
     public class Chat: BaseEntity
     {
         public string Name { get; set; }
-        public bool IsActive { get; set; }
-        public Guid LogoId { get; set; }
+        public ChatStatus Status { get; set; }
+        public Guid? LogoId { get; set; }
 
         // Navigation properties
 

@@ -23,11 +23,16 @@ namespace Sloth.DB.Configuration
 
             builder
                 .Property(x => x.ChatId)
-                .HasColumnName("ChatId");
+                .HasColumnName("ChatId")
+                .IsRequired();
 
             builder
-                .Property(x => x.IsActive)
-                .HasColumnName("IsActive");
+                .Property(x => x.PublicKey)
+                .HasColumnName("PublicKey");
+
+            builder
+                .Property(x => x.Status)
+                .HasColumnName("Status");
 
             builder
                 .Property(x => x.CreatedOn)

@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sloth.Api.Middlewares;
+using Sloth.Api.Services;
 using Sloth.DB;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -33,12 +35,15 @@ namespace Sloth.Api
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
             });
+
+            AddChatServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseForwardedHeaders();
+            app.UseMiddleware<HttpCustomExceptionMiddleware>();
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -52,6 +57,12 @@ namespace Sloth.Api
                 app.UseDeveloperExceptionPage();
             }
             app.UseMvc();
+        }
+
+        private static void AddChatServices(IServiceCollection services)
+        {
+            services
+                .AddTransient<IChatService, ChatService>();
         }
     }
 }
