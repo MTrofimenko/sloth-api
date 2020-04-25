@@ -8,11 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{271B69BB-2D9B-4D02-8BE8-965A9435B018}"
 	ProjectSection(SolutionItems) = preProject
 		db\V1.0__create_tables.sql = db\V1.0__create_tables.sql
+		db\V1.1__add_chat_columns.sql = db\V1.1__add_chat_columns.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9B6C9857-927B-44BE-A5FA-347D9301743A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sloth.DB", "src\Sloth.DB\Sloth.DB.csproj", "{6BC71CCD-EB8C-4B4B-B191-E297464310A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sloth.DB", "src\Sloth.DB\Sloth.DB.csproj", "{6BC71CCD-EB8C-4B4B-B191-E297464310A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

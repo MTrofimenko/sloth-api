@@ -9,8 +9,8 @@ CREATE TABLE [dbo].[User](
 	[Password] [nvarchar](250) NOT NULL,
 	[IsActive] [bit] NOT NULL,
 	[LogoId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[Chat](
@@ -18,8 +18,8 @@ CREATE TABLE [dbo].[Chat](
 	[Name] [nvarchar](100) NOT NULL,
 	[IsActive] [bit] NOT NULL,
 	[LogoId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatMember](
@@ -27,8 +27,8 @@ CREATE TABLE [dbo].[ChatMember](
 	[UserId] [uniqueidentifier] NOT NULL,
 	[ChatId] [uniqueidentifier] NOT NULL,
 	[IsActive] [bit] NOT NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatMessage](
@@ -37,8 +37,8 @@ CREATE TABLE [dbo].[ChatMessage](
 	[Message] [nvarchar](max) NOT NULL,
 	[ReplyToMessageId] [uniqueidentifier] NULL,
 	[ForwardFromUserId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 -- Settings: User --
@@ -49,8 +49,8 @@ CREATE TABLE [dbo].[UserSetting](
 	[Description] [varbinary](500) NULL,
 	[Type] [int] NOT NULL,
 	[IsActive] [bit] NOT NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[UserDefSettingValue](
@@ -61,8 +61,8 @@ CREATE TABLE [dbo].[UserDefSettingValue](
 	[DateTimeValue] [datetime] NULL,
 	[BooleanValue] [bit] NULL,
 	[LookupValueId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[UserSettingValue](
@@ -74,8 +74,8 @@ CREATE TABLE [dbo].[UserSettingValue](
 	[DateTimeValue] [datetime] NULL,
 	[BooleanValue] [bit] NULL,
 	[LookupValueId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[UserSettingLookupValue](
@@ -83,8 +83,8 @@ CREATE TABLE [dbo].[UserSettingLookupValue](
 	[SettingId] [uniqueidentifier] NOT NULL,	
 	[Value] [nvarchar](500) NULL,
 	[IsActive] [bit] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 
@@ -96,8 +96,8 @@ CREATE TABLE [dbo].[ChatSetting](
 	[Description] [varbinary](500) NULL,
 	[Type] [int] NOT NULL,
 	[IsActive] [bit] NOT NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatDefSettingValue](
@@ -108,8 +108,8 @@ CREATE TABLE [dbo].[ChatDefSettingValue](
 	[DateTimeValue] [datetime] NULL,
 	[BooleanValue] [bit] NULL,
 	[LookupValueId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatSettingValue](
@@ -121,8 +121,8 @@ CREATE TABLE [dbo].[ChatSettingValue](
 	[DateTimeValue] [datetime] NULL,
 	[BooleanValue] [bit] NULL,
 	[LookupValueId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatSettingLookupValue](
@@ -130,8 +130,8 @@ CREATE TABLE [dbo].[ChatSettingLookupValue](
 	[SettingId] [uniqueidentifier] NOT NULL,	
 	[Value] [nvarchar](500) NULL,
 	[IsActive] [bit] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 -- Settings: Chat Member --
@@ -142,8 +142,8 @@ CREATE TABLE [dbo].[ChatMemberSetting](
 	[Description] [varbinary](500) NULL,
 	[Type] [int] NOT NULL,
 	[IsActive] [bit] NOT NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatMemberDefSettingValue](
@@ -154,8 +154,8 @@ CREATE TABLE [dbo].[ChatMemberDefSettingValue](
 	[DateTimeValue] [datetime] NULL,
 	[BooleanValue] [bit] NULL,
 	[LookupValueId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatMemberSettingValue](
@@ -167,8 +167,8 @@ CREATE TABLE [dbo].[ChatMemberSettingValue](
 	[DateTimeValue] [datetime] NULL,
 	[BooleanValue] [bit] NULL,
 	[LookupValueId] [uniqueidentifier] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 CREATE TABLE [dbo].[ChatMemberSettingLookupValue](
@@ -176,8 +176,8 @@ CREATE TABLE [dbo].[ChatMemberSettingLookupValue](
 	[SettingId] [uniqueidentifier] NOT NULL,	
 	[Value] [nvarchar](500) NULL,
 	[IsActive] [bit] NULL,
-	[CreatedOn] [datetime] NOT NULL DEFAULT GetUtcDate(),
-	[ModifiedOn] [datetime] NOT NULL DEFAULT GetUtcDate()
+	[CreatedOn] [datetime] NULL DEFAULT GetUtcDate(),
+	[ModifiedOn] [datetime] NULL DEFAULT GetUtcDate()
 )
 
 GO

@@ -8,7 +8,8 @@ namespace Sloth.DB.Models
     {
         public Guid ChatId { get; set; }
         public Guid UserId { get; set; }
-        public bool IsActive { get; set; }
+        public ChatMemberStatus Status { get; set; }
+        public string PublicKey { get; set; }
 
         // Navigation Properties
         public Chat Chat { get; set; }
