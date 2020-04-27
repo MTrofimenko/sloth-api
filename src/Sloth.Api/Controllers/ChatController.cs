@@ -32,7 +32,7 @@ namespace Sloth.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateChat([FromBody] CreateChatDto request)
+        public async Task<IActionResult> CreateChat([FromBody] CreateChatRequest request)
         {
             var chatId = await _service.CreateChatAsync(request, AliceId);
 
@@ -41,7 +41,7 @@ namespace Sloth.Api.Controllers
 
         [HttpPost]
         [Route("{chatId}/confirm")]
-        public async Task<IActionResult> ConfirmChat(Guid chatId, [FromBody] ChatActionDto request)
+        public async Task<IActionResult> ConfirmChat(Guid chatId, [FromBody] ChatActionRequest request)
         {
             await _service.ConfirmChatAsync(chatId, BobId, request.PublicKey);
 

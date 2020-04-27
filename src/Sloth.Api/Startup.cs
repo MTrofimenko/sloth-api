@@ -42,8 +42,8 @@ namespace Sloth.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseForwardedHeaders();
             app.UseMiddleware<HttpCustomExceptionMiddleware>();
+            app.UseForwardedHeaders();
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -52,17 +52,14 @@ namespace Sloth.Api
                 c.RoutePrefix = string.Empty;
             });
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
             app.UseMvc();
         }
 
         private static void AddChatServices(IServiceCollection services)
         {
             services
-                .AddTransient<IChatService, ChatService>();
+                .AddTransient<IChatService, ChatService>()
+                .AddTransient<IChatMessageService, ChatMessageService>();
         }
     }
 }
