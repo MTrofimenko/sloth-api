@@ -44,7 +44,7 @@ namespace Sloth.DB.Configuration
             builder
                 .HasOne(x => x.Sender);
             builder
-                .HasOne(x => x.ForwardFrom);
+                .HasOne(x => x.ForwardFromUser);
 
             builder
                 .HasOne(x => x.ReplyToMessage);

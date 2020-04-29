@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sloth.Api.Models
 {
-    public class CreateChatDto
+    public class CreateChatRequest
     {
         public string Name { get; set; }
         public IEnumerable<Guid> MemberIds { get; set; }
