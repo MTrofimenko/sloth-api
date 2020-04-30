@@ -14,7 +14,7 @@ using System.Security.Claims;
 namespace Sloth.Api.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {

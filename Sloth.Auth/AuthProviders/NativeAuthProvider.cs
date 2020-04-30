@@ -95,7 +95,7 @@ namespace Sloth.Auth.AuthProviders
         public async Task<CurrentUser> GetCurrentUserAsync(Guid id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
-            return _mapper.Map<CurrentUser>(user); ; 
+            return _mapper.Map<CurrentUser>(user);
         }
     }
 }
