@@ -32,14 +32,14 @@ namespace Sloth.Auth.AuthProviders
             _passwordHasher = passwordHasher;
             _authenticationOptions = authenticationOptions.Value;
         }
-        public async Task<AuthResponse> Login(IdentityModel model)
+        public async Task<AuthResponse> LoginAsync(IdentityModel model)
         {
             var user = await _userRepository.GetUserByLoginAsync(model.Login);
             if (user == null) {
-                throw new NotImplementedException();
+                throw new UnauthorizedAccessException("Username \"" + model.Login + "\" not found");
             }
             if (_passwordHasher.VerifyHashedPassword(user, user.Password, model.Password) == PasswordVerificationResult.Failed) {
-                throw new NotImplementedException();
+                throw new UnauthorizedAccessException();
             }
             //TODO tokenProvider
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -60,7 +60,7 @@ namespace Sloth.Auth.AuthProviders
             return new AuthResponse() { Login = model.Login, AccessToken = tokenString };
         }
 
-        public async Task<Guid> Logon(RegisterModel model)
+        public async Task<Guid> LogonAsync(RegisterModel model)
         {
             if (await _userRepository.AnyByLoginAsync(model.Login))
             {
@@ -72,7 +72,7 @@ namespace Sloth.Auth.AuthProviders
             return await _userRepository.AddAsync(user);
         }
 
-        public async Task<IActionResult> Logout()
+        public async Task LogoutAsync()
         {
             throw new NotImplementedException();
         }
@@ -92,9 +92,9 @@ namespace Sloth.Auth.AuthProviders
             });
         }
 
-        public async Task<CurrentUser> GetCurrentUser(string name)
+        public async Task<CurrentUser> GetCurrentUserAsync(Guid id)
         {
-            var user = await _userRepository.GetUserByLoginAsync(name);
+            var user = await _userRepository.GetUserByIdAsync(id);
             return _mapper.Map<CurrentUser>(user); ; 
         }
     }

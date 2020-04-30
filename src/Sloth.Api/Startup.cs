@@ -92,7 +92,7 @@ namespace Sloth.Api
             AddChatServices(services);
             services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddTransient<IAuthProvider, NativeAuthProvider>();
-            services.AddTransient<IAuthService, AuthServise>();
+            services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserRepository, UserRepository>();
         }
 

@@ -8,10 +8,10 @@ namespace Sloth.Auth.AuthProviders
 {
     public interface IAuthProvider
     {
-        Task<AuthResponse> Login(IdentityModel model);
-        Task<Guid> Logon(RegisterModel model);
-        Task<IActionResult> Logout();
+        Task<AuthResponse> LoginAsync(IdentityModel model);
+        Task<Guid> LogonAsync(RegisterModel model);
+        Task LogoutAsync();
         Task<ClaimsPrincipal> IntrospectTokenAsync(string authenticationToken);
-        Task<CurrentUser> GetCurrentUser(string name);
+        Task<CurrentUser> GetCurrentUserAsync(Guid id);
     }
 }

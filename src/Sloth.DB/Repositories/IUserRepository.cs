@@ -8,6 +8,7 @@ namespace Sloth.DB.Repositories
 {
     public interface IUserRepository
     {
+        Task<User> GetUserByIdAsync(Guid id);
         Task<User> GetUserByLoginAsync(string login);
         Task<bool> AnyByLoginAsync(string login);
         Task<Guid> AddAsync(User user);

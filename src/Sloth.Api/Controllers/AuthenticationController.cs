@@ -9,6 +9,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Sloth.Auth.Models;
 using Sloth.Auth;
+using System.Security.Claims;
 
 namespace Sloth.Api.Controllers
 {
@@ -19,30 +20,30 @@ namespace Sloth.Api.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IAuthService _authServise;
+        private readonly IAuthService _authService;
 
-        public AuthenticationController(IMapper mapper, IAuthService authServise) {
+        public AuthenticationController(IMapper mapper, IAuthService authService) {
             _mapper = mapper;
-            _authServise = authServise;
+            _authService = authService;
         }
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<AuthResponse> Login([FromBody]IdentityModel model)
         {
-           return await _authServise.Login(model);
+           return await _authService.LoginAsync(model);
             
         }
         [AllowAnonymous]
         [HttpPost("logon")]
         public async Task<Guid> Logon([FromBody]RegisterModel model)
         {
-            return await _authServise.Logon(model);
+            return await _authService.LogonAsync(model);
         }
 
         [HttpGet("current")]
         public async Task<CurrentUser> Current()
-        {
-            return await _authServise.GetCurrentUser(HttpContext.User.Identity.Name);
+        { 
+            return await _authService.GetCurrentUserAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
         }
     }
 }

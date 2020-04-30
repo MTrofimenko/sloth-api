@@ -22,5 +22,10 @@ namespace Sloth.DB.Repositories
            await DbContext.SaveChangesAsync();
            return user.Id;
         }
+
+        public async Task<User> GetUserByIdAsync(Guid id)
+        {
+            return await DbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

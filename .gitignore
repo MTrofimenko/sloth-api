@@ -2,3 +2,6 @@
 obj/
 bin/
 **/wwwroot/client/
+.vscode/tasks.json
+.vscode/launch.json
+src/Sloth.Api/Sloth.Api.csproj.user

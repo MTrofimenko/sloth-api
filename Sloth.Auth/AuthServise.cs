@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Sloth.Auth
 {
-    public class AuthServise : IAuthService
+    public class AuthService : IAuthService
     {
         private readonly IAuthProvider _authProvider;
 
-        public AuthServise(IAuthProvider authProvider) {
+        public AuthService(IAuthProvider authProvider) {
             _authProvider = authProvider;
         }
 
-        public async Task<CurrentUser> GetCurrentUser(string name)
+        public async Task<CurrentUser> GetCurrentUserAsync(Guid id)
         {
-            return await _authProvider.GetCurrentUser(name);
+            return await _authProvider.GetCurrentUserAsync(id);
         }
 
         public async Task<ClaimsPrincipal> IntrospectTokenAsync(string authenticationToken)
@@ -24,14 +24,14 @@ namespace Sloth.Auth
             return await _authProvider.IntrospectTokenAsync(authenticationToken);
         }
 
-        public async Task<AuthResponse> Login(IdentityModel model)
+        public async Task<AuthResponse> LoginAsync(IdentityModel model)
         {
-            return await _authProvider.Login(model);
+            return await _authProvider.LoginAsync(model);
         }
 
-        public async Task<Guid> Logon(RegisterModel model)
+        public async Task<Guid> LogonAsync(RegisterModel model)
         {
-            return await _authProvider.Logon(model);
+            return await _authProvider.LogonAsync(model);
         }
     }
 }

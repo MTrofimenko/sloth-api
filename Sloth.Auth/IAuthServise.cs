@@ -7,9 +7,9 @@ namespace Sloth.Auth
 {
     public interface IAuthService
     {
-        Task<Guid> Logon(RegisterModel model);
-        Task<AuthResponse> Login(IdentityModel model);
+        Task<Guid> LogonAsync(RegisterModel model);
+        Task<AuthResponse> LoginAsync(IdentityModel model);
         Task<ClaimsPrincipal> IntrospectTokenAsync(string authenticationToken);
-        Task<CurrentUser> GetCurrentUser(string name);
+        Task<CurrentUser> GetCurrentUserAsync(Guid id);
     }
 }
