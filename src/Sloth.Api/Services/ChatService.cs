@@ -19,7 +19,7 @@ namespace Sloth.Api.Services
             _dbContext = dbContext;
         }
 
-        public async Task<Guid> CreateChatAsync(CreateChatDto request, Guid userId)
+        public async Task<Guid> CreateChatAsync(CreateChatRequest request, Guid userId)
         {
             var chat = await CreateChatAsync(request.Name);
 
@@ -40,7 +40,7 @@ namespace Sloth.Api.Services
         {
             var chatIds = await _dbContext.ChatMembers
                 .Include(c => c.Chat)
-                .Where(x => x.UserId == userId && (x.Chat.Status != ChatStatus.Deleted && x.Chat.Status != ChatStatus.Aborted) &&
+                .Where(x => x.UserId == userId && x.Chat.Status != ChatStatus.Deleted && x.Chat.Status != ChatStatus.Aborted &&
                             (x.Status != ChatMemberStatus.Aborted ||
                              x.Status != ChatMemberStatus.Removed))
                 .Select(x => x.ChatId)
@@ -58,7 +58,7 @@ namespace Sloth.Api.Services
 
         public async Task ConfirmChatAsync(Guid chatId, Guid userId, string publicKey)
         {
-            var chat = GetChatById(chatId);
+            var chat = GetPendingChatById(chatId);
             var chatMember = GetChatMember(chat, userId);
 
             // TODO: might intermediate status needed
@@ -72,8 +72,7 @@ namespace Sloth.Api.Services
 
         public async Task DeclineChatAsync(Guid chatId, Guid userId)
         {
-            var chat = GetChatById(chatId);
-
+            var chat = GetPendingChatById(chatId);
             var chatMember = GetChatMember(chat, userId);
 
             // TODO: might intermediate status needed
@@ -86,13 +85,17 @@ namespace Sloth.Api.Services
 
         private static ChatMember GetChatMember(Chat chat, Guid userId)
         {
-            var currentMember = chat.Members.FirstOrDefault(x => x.UserId == userId); 
-            if (currentMember == null)
+            var chatMember = chat.Members.FirstOrDefault(x => x.UserId == userId); 
+            if (chatMember == null)
             {
                 throw new SlothEntityNotFoundException($"Chat member for chatId {chat.Id} was not found.");
             }
+            if (chatMember.Status != ChatMemberStatus.Pending)
+            {
+                throw new SlothException($"Chat member {chatMember.Id} for chatId {chat.Id} was not in pending state.");
+            }
 
-            return currentMember;
+            return chatMember;
         }
 
         private static string GetChatName(Chat chat, Guid userId)
@@ -108,7 +111,7 @@ namespace Sloth.Api.Services
                 throw new SlothException($"Can't find interlocutor for chat {chat.Id} and userId {userId}.");
             }
 
-            return $"{interlocutor?.FirstName} {interlocutor?.LastName}".Trim();
+            return $"{interlocutor.FirstName} {interlocutor?.LastName}".Trim();
         }
 
         private static ChatDto ToChatDto(Chat chat, Guid userId)
@@ -130,18 +133,27 @@ namespace Sloth.Api.Services
         {
             return new ChatMemberDto()
             {
+                ChatMemberId = y.Id,
                 UserId = y.UserId,
                 Status = y.Status,
                 PublicKey = y.PublicKey
             };
         }
 
-        private Chat GetChatById(Guid chatId)
+        private Chat GetPendingChatById(Guid chatId)
         {
-            var chat = _dbContext.Chats.Include(x => x.Members).FirstOrDefault(x => x.Id == chatId);
+            var chat = _dbContext.Chats
+                .Include(x => x.Members)
+                .FirstOrDefault(x => x.Id == chatId);
+
             if (chat == null)
             {
                 throw new SlothEntityNotFoundException($"Chat with id {chatId} wasn't found.");
+            }
+
+            if (chat.Status != ChatStatus.Pending)
+            {
+                throw new SlothException($"Chat {chatId} is not in pending status.");
             }
 
             return chat;
