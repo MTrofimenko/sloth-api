@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sloth.Auth\Sloth.Auth.csproj" />
+    <ProjectReference Include="..\Sloth.Auth\Sloth.Auth.csproj" />
     <ProjectReference Include="..\Sloth.DB\Sloth.DB.csproj" />
   </ItemGroup>
 
