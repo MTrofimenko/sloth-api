@@ -6,10 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Sloth.DB\Sloth.DB.csproj" />
+    <ProjectReference Include="..\Sloth.DB\Sloth.DB.csproj" />
   </ItemGroup>
 
 </Project>
