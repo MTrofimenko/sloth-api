@@ -4,12 +4,12 @@ using Sloth.DB.Models;
 
 namespace Sloth.DB.Configuration
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class SessionRefreshTokenConfiguration : IEntityTypeConfiguration<SessionRefreshToken>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<SessionRefreshToken> builder)
         {
             builder
-                .ToTable("User", "dbo")
+                .ToTable("SessionRefreshToken", "dbo")
                 .HasKey(x => x.Id);
 
             builder
@@ -17,35 +17,23 @@ namespace Sloth.DB.Configuration
                 .HasColumnName("Id");
 
             builder
-                .Property(x => x.Login)
-                .HasColumnName("Login")
+                .Property(x => x.UserId)
+                .HasColumnName("UserId")
                 .IsRequired();
 
             builder
-                .Property(x => x.FirstName)
-                .HasColumnName("FirstName")
+                .Property(x => x.Token)
+                .HasColumnName("Token")
                 .IsRequired();
 
             builder
-                .Property(x => x.LastName)
-                .HasColumnName("LastName")
+                .Property(x => x.ExpiredTime)
+                .HasColumnName("ExpiredTime")
                 .IsRequired();
-
-            builder
-                .Property(x => x.Password)
-                .HasColumnName("Password");
-
-            builder
-                .Property(x => x.Email)
-                .HasColumnName("Email");
 
             builder
                 .Property(x => x.IsActive)
                 .HasColumnName("IsActive");
-
-            builder
-                .Property(x => x.LogoId)
-                .HasColumnName("LogoId");
 
             builder
                 .Property(x => x.CreatedOn)
@@ -56,7 +44,7 @@ namespace Sloth.DB.Configuration
                 .HasColumnName("ModifiedOn");
 
             builder
-                .HasOne(x => x.Logo);
+                .HasOne(x => x.User);
         }
     }
 }

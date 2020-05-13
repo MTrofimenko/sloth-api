@@ -1,29 +1,29 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Sloth.DB;
-using Sloth.DB.Models;
+using Sloth.Api.Services;
+using Sloth.Auth.Models;
 
 namespace Sloth.Api
 {
-    [Route("user")]
+    [Authorize]
+    [Route("api/user")]
     public class UserController : ControllerBase
     {
-        private readonly ISlothDbContext _dbContext;
 
-        public UserController(ISlothDbContext dbContext)
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
         {
-            _dbContext = dbContext;
+            _userService = userService;
         }
 
-        /// <summary>
-        /// Get all users  
-        /// </summary>
-        [HttpGet]
-        public async Task<User[]> Register()
+        [HttpGet("current")]
+        public async Task<CurrentUser> Current()
         {
-            var users = await _dbContext.Users.ToArrayAsync();
-            return users;
+           return await _userService.GetCurrentUserAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
         }
     }
 }

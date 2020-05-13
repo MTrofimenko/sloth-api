@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sloth.DB.Repositories;
 
 namespace Sloth.DB
 {
@@ -23,6 +24,11 @@ namespace Sloth.DB
                         .EnableSensitiveDataLogging()
                         .UseSqlServer(connectionString);
                 });
+        }
+        public static IServiceCollection AddSlothRepositories(this IServiceCollection services)
+        {
+            return services.AddTransient<IUserRepository, UserRepository>()
+                            .AddTransient<ISessionRefreshTokenRepository, SessionRefreshTokenRepository>();
         }
     }
 }

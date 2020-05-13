@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sloth.DB.Models;
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Sloth.Auth.Models;
 using Sloth.Auth;
@@ -19,11 +14,9 @@ namespace Sloth.Api.Controllers
     public class AuthenticationController : ControllerBase
     {
 
-        private readonly IMapper _mapper;
         private readonly IAuthService _authService;
 
-        public AuthenticationController(IMapper mapper, IAuthService authService) {
-            _mapper = mapper;
+        public AuthenticationController(IAuthService authService) {
             _authService = authService;
         }
         [AllowAnonymous]
@@ -40,10 +33,17 @@ namespace Sloth.Api.Controllers
             return await _authService.LogonAsync(model);
         }
 
-        [HttpGet("current")]
-        public async Task<CurrentUser> Current()
-        { 
-            return await _authService.GetCurrentUserAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
+        [AllowAnonymous]
+        [HttpPost("refresh")]
+        public async Task<AuthResponse> Refresh([FromBody]RefreshModel model)
+        {
+            return await _authService.RefreshAsync(model);
+        }
+
+        [HttpGet("logout")]
+        public async Task Logout([FromBody]RefreshModel model)
+        {
+            await _authService.LogoutAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
         }
     }
 }

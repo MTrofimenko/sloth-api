@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Sloth.Auth.Models;
+﻿using Sloth.Auth.Models;
 using System;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Sloth.Auth.AuthProviders
@@ -10,8 +8,7 @@ namespace Sloth.Auth.AuthProviders
     {
         Task<AuthResponse> LoginAsync(IdentityModel model);
         Task<Guid> LogonAsync(RegisterModel model);
-        Task LogoutAsync();
-        Task<ClaimsPrincipal> IntrospectTokenAsync(string authenticationToken);
-        Task<CurrentUser> GetCurrentUserAsync(Guid id);
+        Task LogoutAsync(Guid userId);
+        Task<AuthResponse> RefreshAsync(RefreshModel model);
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sloth.Api", "src\Sloth.Api\Sloth.Api.csproj", "{7C86C9DF-EA83-4781-9AB8-73D18984E9DC}"
 EndProject
@@ -9,13 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{271B69BB-2D9B-
 	ProjectSection(SolutionItems) = preProject
 		db\V1.0__create_tables.sql = db\V1.0__create_tables.sql
 		db\V1.1__add_chat_columns.sql = db\V1.1__add_chat_columns.sql
+		V1.2_add_user_email_colum_and_sessionrefreshtoken_table.sql = V1.2_add_user_email_colum_and_sessionrefreshtoken_table.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9B6C9857-927B-44BE-A5FA-347D9301743A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sloth.DB", "src\Sloth.DB\Sloth.DB.csproj", "{6BC71CCD-EB8C-4B4B-B191-E297464310A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sloth.Auth", "src\Sloth.Auth\Sloth.Auth.csproj", "{99A10F3A-7F3F-4CFE-9DEE-2E43FD772475}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sloth.Auth", "src\Sloth.Auth\Sloth.Auth.csproj", "{99A10F3A-7F3F-4CFE-9DEE-2E43FD772475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

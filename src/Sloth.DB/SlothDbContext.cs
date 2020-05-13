@@ -15,7 +15,7 @@ namespace Sloth.DB
         public SlothDbContext(DbContextOptions<SlothDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        //public DbSet<User> UserSessions { get; set; }
+        public DbSet<SessionRefreshToken> SessionRefreshTokens { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<ChatMember> ChatMembers { get; set; }
         public DbSet<ChatMessage> ChatMessages { get; set; }
@@ -45,6 +45,7 @@ namespace Sloth.DB
             modelBuilder.ApplyConfiguration(new ChatConfiguration());
             modelBuilder.ApplyConfiguration(new ChatMemberConfiguration());
             modelBuilder.ApplyConfiguration(new ChatMessageConfiguration());
+            modelBuilder.ApplyConfiguration(new SessionRefreshTokenConfiguration());
 
             // Settings
             modelBuilder.AddUserSettingConfiguration();

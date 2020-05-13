@@ -2,7 +2,7 @@
 
 namespace Sloth.DB.Models
 {
-    public class UserSession : BaseEntity
+    public class SessionRefreshToken : BaseEntity
     {
         public Guid UserId { get; set; }
         public string Token { get; set; }

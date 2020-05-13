@@ -12,6 +12,8 @@ namespace Sloth.Auth.Models
         public string SwaggerClientId { get; set; }
         public string ApiName { get; set; }
         public string ApiSecret { get; set; }
+        public int TokenTimeout { get; set; }
+        public int RefreshTokenTimeout { get; set; }
         public SymmetricSecurityKey GetSymmetricSecurityKey()
         {
             return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(ApiSecret));
