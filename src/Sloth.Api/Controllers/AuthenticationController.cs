@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Sloth.Auth.Models;
+using Sloth.Api.Extensions;
 using Sloth.Auth;
-using System.Security.Claims;
+using Sloth.Auth.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace Sloth.Api.Controllers
 {
@@ -21,29 +21,29 @@ namespace Sloth.Api.Controllers
         }
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<AuthResponse> Login([FromBody]IdentityModel model)
+        public async Task<AuthResponse> LoginAsync([FromBody]IdentityModel model)
         {
            return await _authService.LoginAsync(model);
             
         }
         [AllowAnonymous]
         [HttpPost("logon")]
-        public async Task<Guid> Logon([FromBody]RegisterModel model)
+        public async Task<Guid> LogonAsync([FromBody]RegisterModel model)
         {
             return await _authService.LogonAsync(model);
         }
 
         [AllowAnonymous]
         [HttpPost("refresh")]
-        public async Task<AuthResponse> Refresh([FromBody]RefreshModel model)
+        public async Task<AuthResponse> RefreshAsync([FromBody]RefreshModel model)
         {
             return await _authService.RefreshAsync(model);
         }
 
         [HttpGet("logout")]
-        public async Task Logout([FromBody]RefreshModel model)
+        public async Task LogoutAsync([FromBody]RefreshModel model)
         {
-            await _authService.LogoutAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
+            await _authService.LogoutAsync(HttpContext.GetCurrentUserId());
         }
     }
 }

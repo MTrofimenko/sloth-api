@@ -50,19 +50,8 @@ namespace Sloth.Auth.TokenProvider
 
         public ClaimsPrincipal IntrospectToken(string token, out SecurityToken validatedToken)
         {
-            TokenValidationParameters validationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = _authenticationOptions.GetSymmetricSecurityKey(),
-
-                ValidateIssuer = true,
-                ValidIssuer = _authenticationOptions.ApiName,
-
-                ValidateAudience = true,
-                ValidAudiences = new[] { _authenticationOptions.ClientId, _authenticationOptions.SwaggerClientId },
-
-                ValidateLifetime = false
-            };
+            var validationParameters = _authenticationOptions.TokenValidationParameters.Clone();
+            validationParameters.ValidateLifetime = false;
             return new JwtSecurityTokenHandler().ValidateToken(token.Replace("Bearer ", ""), validationParameters, out validatedToken);
         }
     }

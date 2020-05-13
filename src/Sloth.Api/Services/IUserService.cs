@@ -6,6 +6,6 @@ namespace Sloth.Api.Services
 {
     public interface IUserService
     {
-        Task<CurrentUser> GetCurrentUserAsync(Guid guid);
+        Task<CurrentUser> GetCurrentUserAsync(Guid userId);
     }
 }

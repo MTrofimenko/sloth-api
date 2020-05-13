@@ -1,10 +1,9 @@
-﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sloth.Api.Extensions;
 using Sloth.Api.Services;
 using Sloth.Auth.Models;
+using System.Threading.Tasks;
 
 namespace Sloth.Api
 {
@@ -21,9 +20,9 @@ namespace Sloth.Api
         }
 
         [HttpGet("current")]
-        public async Task<CurrentUser> Current()
+        public async Task<CurrentUser> GetCurrentUserAsync()
         {
-           return await _userService.GetCurrentUserAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
+           return await _userService.GetCurrentUserAsync(HttpContext.GetCurrentUserId());
         }
     }
 }
