@@ -8,6 +8,6 @@ namespace Sloth.Api.Services
     public interface IChatMessageService
     {
         Task<IEnumerable<ChatMessageDto>> GetChatMessagesAsync(Guid chatId, Guid userId);
-        Task SaveChatMessageAsync(Guid chatId, CreateChatMessageRequest messageRequest, Guid userId);
+        Task<Guid> SaveChatMessageAsync(Guid chatId, CreateChatMessageRequest messageRequest, Guid userId);
     }
 }
