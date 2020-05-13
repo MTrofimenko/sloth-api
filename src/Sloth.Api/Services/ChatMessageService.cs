@@ -34,19 +34,23 @@ namespace Sloth.Api.Services
             }
 
             var messages = await _dbContext.ChatMessages
+                .Include(x => x.Sender)
                 .Where(x => memberIds.Contains(x.ChatMemberId))
                 .Select(x => new ChatMessageDto()
                 {
+                    Id = x.Id,
+                    UserId = x.Sender.UserId,
                     ChatMemberId = x.ChatMemberId,
                     ForwardFromUserId = x.ForwardFromUserId,
                     Message = x.Message,
-                    ReplyToMessageId = x.ReplyToMessageId
+                    ReplyToMessageId = x.ReplyToMessageId,
+                    // SendDate = x.CreatedOn.Value TODO: check why is not set on db
                 }).ToArrayAsync();
 
             return messages;
         }
 
-        public async Task SaveChatMessageAsync(Guid chatId, CreateChatMessageRequest messageRequest, Guid userId)
+        public async Task<Guid> SaveChatMessageAsync(Guid chatId, CreateChatMessageRequest messageRequest, Guid userId)
         {
             var chatMember = _dbContext.ChatMembers
                 .Include(x=> x.Chat)
@@ -62,15 +66,18 @@ namespace Sloth.Api.Services
                 throw new SlothException($"Chat {chatId} is not active or member {chatMember.Id} is not active.");
             }
 
-            _dbContext.ChatMessages.Add(new ChatMessage()
+            var message = new ChatMessage()
             {
                 ChatMemberId = chatMember.Id,
                 Message = messageRequest.Message,
                 ReplyToMessageId = messageRequest.ReplyToMessageId, // TODO: add checks that message exists
                 ForwardFromUserId = messageRequest.ForwardFromUserId //TODO: add checks that user exists
-            });
+            };
 
+            await _dbContext.ChatMessages.AddAsync(message);
             await _dbContext.SaveChangesAsync();
+
+            return message.Id;
         }
     }
 }
