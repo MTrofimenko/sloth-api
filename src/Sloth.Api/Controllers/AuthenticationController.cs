@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sloth.DB.Models;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Sloth.Auth.Models;
+using Sloth.Api.Extensions;
 using Sloth.Auth;
-using System.Security.Claims;
+using Sloth.Auth.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace Sloth.Api.Controllers
 {
@@ -19,31 +14,36 @@ namespace Sloth.Api.Controllers
     public class AuthenticationController : ControllerBase
     {
 
-        private readonly IMapper _mapper;
         private readonly IAuthService _authService;
 
-        public AuthenticationController(IMapper mapper, IAuthService authService) {
-            _mapper = mapper;
+        public AuthenticationController(IAuthService authService) {
             _authService = authService;
         }
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<AuthResponse> Login([FromBody]IdentityModel model)
+        public async Task<AuthResponse> LoginAsync([FromBody]IdentityModel model)
         {
            return await _authService.LoginAsync(model);
             
         }
         [AllowAnonymous]
         [HttpPost("logon")]
-        public async Task<Guid> Logon([FromBody]RegisterModel model)
+        public async Task<Guid> LogonAsync([FromBody]RegisterModel model)
         {
             return await _authService.LogonAsync(model);
         }
 
-        [HttpGet("current")]
-        public async Task<CurrentUser> Current()
-        { 
-            return await _authService.GetCurrentUserAsync(new Guid(HttpContext.User.FindFirstValue(ClaimTypes.Sid)));
+        [AllowAnonymous]
+        [HttpPost("refresh")]
+        public async Task<AuthResponse> RefreshAsync([FromBody]RefreshModel model)
+        {
+            return await _authService.RefreshAsync(model);
+        }
+
+        [HttpGet("logout")]
+        public async Task LogoutAsync([FromBody]RefreshModel model)
+        {
+            await _authService.LogoutAsync(HttpContext.GetCurrentUserId());
         }
     }
 }

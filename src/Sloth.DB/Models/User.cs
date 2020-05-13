@@ -10,7 +10,7 @@ namespace Sloth.DB.Models
         public string Password { get; set; }
         public bool IsActive { get; set; }
         public Guid? LogoId { get; set; }
-
+        public string Email { get; set; }
         // Navigation Properties
         public File Logo { get; set; }
     }

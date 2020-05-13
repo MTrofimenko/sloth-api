@@ -12,7 +12,7 @@ namespace Sloth.DB
     public interface ISlothDbContext : IDisposable
     {
         DbSet<User> Users { get; set; }
-        //DbSet<User> UserSessions { get; set; }
+        DbSet<SessionRefreshToken> SessionRefreshTokens { get; set; }
         DbSet<Chat> Chats { get; set; }
         DbSet<ChatMember> ChatMembers { get; set; }
         DbSet<ChatMessage> ChatMessages { get; set; }

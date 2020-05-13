@@ -8,5 +8,7 @@ namespace Sloth.Auth.Models
     {
         public string Login { get; set; }
         public string AccessToken { get; set; }
+        public DateTime Expires { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

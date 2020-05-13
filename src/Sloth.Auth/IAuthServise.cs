@@ -1,7 +1,6 @@
-﻿using System;
-using System.Security.Claims;
+﻿using Sloth.Auth.Models;
+using System;
 using System.Threading.Tasks;
-using Sloth.Auth.Models;
 
 namespace Sloth.Auth
 {
@@ -9,7 +8,7 @@ namespace Sloth.Auth
     {
         Task<Guid> LogonAsync(RegisterModel model);
         Task<AuthResponse> LoginAsync(IdentityModel model);
-        Task<ClaimsPrincipal> IntrospectTokenAsync(string authenticationToken);
-        Task<CurrentUser> GetCurrentUserAsync(Guid id);
+        Task<AuthResponse> RefreshAsync(RefreshModel model);
+        Task LogoutAsync(Guid userId);
     }
 }
