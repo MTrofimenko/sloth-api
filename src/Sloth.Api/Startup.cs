@@ -12,6 +12,7 @@ using AutoMapper;
 using Sloth.Api.Configuration.AutoMapper;
 using Sloth.Auth;
 using Sloth.DB;
+using Sloth.Api.Filters;
 
 namespace Sloth.Api
 {
@@ -34,7 +35,14 @@ namespace Sloth.Api
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Info() { Title = "Sloth API", Version = "v1" });
-                // options.DocumentFilter<SwaggerSecurityRequirementsDocumentFilter>(); TODO: enable it after authorization is done
+                options.DocumentFilter<SwaggerSecurityRequirementsDocumentFilter>();
+                options.AddSecurityDefinition("oauth2", new ApiKeyScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+                    In = "header",
+                    Name = "Authorization",
+                    Type = "apiKey"
+                });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
