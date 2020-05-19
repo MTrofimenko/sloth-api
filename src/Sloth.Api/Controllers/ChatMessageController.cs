@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sloth.Api.Extensions;
 using Sloth.Api.Models;
-using Sloth.Api.Services;
+using Sloth.DB.Repositories;
+using Sloth.DB.Repositories.Models;
 
 namespace Sloth.Api.Controllers
 {
@@ -13,30 +16,37 @@ namespace Sloth.Api.Controllers
     [Authorize]
     public class ChatMessageController : ControllerBase
     {
-        private readonly IChatMessageService _service;
-       
-        public ChatMessageController(IChatMessageService service)
+        private readonly IChatMessageRepository _repository;
+        private readonly IMapper _mapper;
+
+        public ChatMessageController( IMapper mapper, IChatMessageRepository repository)
         {
-            _service = service;
+            _mapper = mapper;
+            _repository = repository;
         }
 
         [HttpGet]
         public async Task<GetChatMessageResponse> GetMessagesAsync(Guid chatId)
         {
-            var messages = await _service.GetChatMessagesAsync(chatId, HttpContext.GetCurrentUserId());
+            var messages = (await _repository.GetChatMessagesAsync(chatId, HttpContext.GetCurrentUserId())).ToArray();
+            var messagesDto = messages.Select(x => _mapper.Map<ChatMessageDto>(x)).ToArray();
 
             return new GetChatMessageResponse()
             {
-                ChatMessages = messages
+                ChatMessages = messagesDto
             };
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendMessageAsync(Guid chatId, [FromBody] CreateChatMessageRequest request)
+        public async Task<ChatMessageDto> SendMessageAsync(Guid chatId, [FromBody] CreateChatMessageRequest request)
         {
-            var messageId = await _service.SaveChatMessageAsync(chatId, request, HttpContext.GetCurrentUserId());
+            request.UserId = HttpContext.GetCurrentUserId();
+            request.ChatId = chatId;
 
-            return Ok(messageId);
+            var messageId = await _repository.SaveChatMessageAsync(request);
+            var message = await _repository.GetChatMessageByIdAsync(messageId);
+
+            return _mapper.Map<ChatMessageDto>(message);
         }
     }
 }

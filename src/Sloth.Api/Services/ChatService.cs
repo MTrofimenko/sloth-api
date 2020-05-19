@@ -2,66 +2,65 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Sloth.Api.Exceptions;
+using AutoMapper;
 using Sloth.Api.Models;
+using Sloth.Common.Exceptions;
 using Sloth.DB;
 using Sloth.DB.Models;
+using Sloth.DB.Repositories;
 
 namespace Sloth.Api.Services
 {
     public class ChatService : IChatService
     {
         private readonly ISlothDbContext _dbContext;
+        private readonly IChatRepository _repository;
+        private readonly IChatNameResolver _nameResolver;
+        private readonly IMapper _mapper;
 
-        public ChatService(ISlothDbContext dbContext)
+        public ChatService(ISlothDbContext dbContext, IMapper mapper, IChatRepository repository, IChatNameResolver nameResolver)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
+            _repository = repository;
+            _nameResolver = nameResolver;
         }
 
         public async Task<Guid> CreateChatAsync(CreateChatRequest request, Guid userId)
         {
-            var chat = await CreateChatAsync(request.Name);
+            var chat = await _repository.CreateChatAsync(request.Name);
 
             foreach (var memberId in request.MemberIds)
             {
-                await CreateChatMemberAsync(chat.Id, memberId);
+                await _repository.CreateChatMemberAsync(chat.Id, memberId);
             }
 
             // Add creator as a member 
-            await CreateChatMemberAsync(chat.Id, userId, ChatMemberStatus.Active, request.CreatorPublicKey);
-
-            await _dbContext.SaveChangesAsync();
+            await _repository.CreateChatMemberAsync(chat.Id, userId, ChatMemberStatus.Active, request.CreatorPublicKey);
 
             return chat.Id;
         }
 
+        public async Task<ChatDto> GetChatByIdAsync(Guid chatId, Guid userId)
+        {
+            var chat = await _repository.GetChatByIdAsync(chatId);
+
+            return ToChatDto(chat, userId);
+        }
+
         public async Task<IEnumerable<ChatDto>> GetChatsAsync(Guid userId)
         {
-            var chatIds = await _dbContext.ChatMembers
-                .Include(c => c.Chat)
-                .Where(x => x.UserId == userId && x.Chat.Status != ChatStatus.Deleted && x.Chat.Status != ChatStatus.Aborted &&
-                            (x.Status != ChatMemberStatus.Aborted ||
-                             x.Status != ChatMemberStatus.Removed))
-                .Select(x => x.ChatId)
-                .ToListAsync();
-
-            var chats = (await _dbContext.Chats
-                .Include(c => c.Members)
-                .ThenInclude(c => c.User)
-                .Where(x => chatIds.Contains(x.Id))
-                .ToArrayAsync())
-                .Select(x=> ToChatDto(x, userId));
+            var chats = (await _repository.GetChatsByUserIdAsync(userId))
+                .Select(x=> ToChatDto(x, userId))
+                .ToArray();
 
             return chats;
         }
 
         public async Task ConfirmChatAsync(Guid chatId, Guid userId, string publicKey)
         {
-            var chat = GetPendingChatById(chatId);
-            var chatMember = GetChatMember(chat, userId);
+            var (chat, chatMember) = await GetPendingChatEntities(chatId, userId);
 
-            // TODO: might intermediate status needed
             chatMember.Status = ChatMemberStatus.Active;
             chatMember.PublicKey = publicKey;
 
@@ -72,51 +71,36 @@ namespace Sloth.Api.Services
 
         public async Task DeclineChatAsync(Guid chatId, Guid userId)
         {
-            var chat = GetPendingChatById(chatId);
-            var chatMember = GetChatMember(chat, userId);
+            var (chat, chatMember) = await GetPendingChatEntities(chatId, userId);
 
-            // TODO: might intermediate status needed
             chatMember.Status = ChatMemberStatus.Aborted;
             chat.Status = ChatStatus.Aborted;
 
             await _dbContext.SaveChangesAsync();
         }
 
-
-        private static ChatMember GetChatMember(Chat chat, Guid userId)
+        private async Task<(Chat chat, ChatMember chatMember)> GetPendingChatEntities(Guid chatId, Guid userId)
         {
-            var chatMember = chat.Members.FirstOrDefault(x => x.UserId == userId); 
-            if (chatMember == null)
+            var chat = await _repository.GetChatByIdAsync(chatId);
+
+            if (chat.Status != ChatStatus.Pending)
             {
-                throw new SlothEntityNotFoundException($"Chat member for chatId {chat.Id} was not found.");
+                throw new SlothException($"Chat {chatId} is not in pending status.");
             }
+
+            var chatMember = await _repository.GetChatMemberAsync(chatId, userId);
+
             if (chatMember.Status != ChatMemberStatus.Pending)
             {
-                throw new SlothException($"Chat member {chatMember.Id} for chatId {chat.Id} was not in pending state.");
+                throw new SlothException($"Chat member {chatMember.Id} for chatId {chatId} was not in pending state.");
             }
 
-            return chatMember;
+            return (chat, chatMember);
         }
 
-        private static string GetChatName(Chat chat, Guid userId)
+        private ChatDto ToChatDto(Chat chat, Guid userId)
         {
-            if (!string.IsNullOrWhiteSpace(chat.Name))
-            {
-                return chat.Name;
-            } 
-
-            var interlocutor = chat.Members.FirstOrDefault(x => x.UserId != userId)?.User;
-            if (interlocutor == null)
-            {
-                throw new SlothException($"Can't find interlocutor for chat {chat.Id} and userId {userId}.");
-            }
-
-            return $"{interlocutor.FirstName} {interlocutor?.LastName}".Trim();
-        }
-
-        private static ChatDto ToChatDto(Chat chat, Guid userId)
-        {
-            var chatName = GetChatName(chat, userId);
+            var chatName = _nameResolver.GetChatNameForUser(chat, userId);
 
             return new ChatDto()
             {
@@ -125,73 +109,8 @@ namespace Sloth.Api.Services
                 Status = chat.Status,
                 Members = chat.Members
                     .Where(x => x.Status != ChatMemberStatus.Removed)
-                    .Select(ToChatMemberDto)
+                    .Select(x=> _mapper.Map<ChatMemberDto>(x))
             };
-        }
-
-        private static ChatMemberDto ToChatMemberDto(ChatMember y)
-        {
-            return new ChatMemberDto()
-            {
-                ChatMemberId = y.Id,
-                UserId = y.UserId,
-                Status = y.Status,
-                PublicKey = y.PublicKey
-            };
-        }
-
-        private Chat GetPendingChatById(Guid chatId)
-        {
-            var chat = _dbContext.Chats
-                .Include(x => x.Members)
-                .FirstOrDefault(x => x.Id == chatId);
-
-            if (chat == null)
-            {
-                throw new SlothEntityNotFoundException($"Chat with id {chatId} wasn't found.");
-            }
-
-            if (chat.Status != ChatStatus.Pending)
-            {
-                throw new SlothException($"Chat {chatId} is not in pending status.");
-            }
-
-            return chat;
-        }
-
-        private async Task CreateChatMemberAsync(Guid chatId, Guid memberId, ChatMemberStatus status = ChatMemberStatus.Pending, string publicKey = null)
-        {
-            var member = new ChatMember()
-            {
-                UserId = memberId,
-                ChatId = chatId,
-                Status = status,
-                PublicKey = publicKey
-            };
-
-            await _dbContext.ChatMembers.AddAsync(member);
-        }
-
-        private async Task<Chat> CreateChatAsync(string chatName)
-        {
-            try
-            {
-                var chat = new Chat()
-                {
-                    Name = chatName,
-                    Status = ChatStatus.Pending
-                    // TODO: add Created By Column
-                };
-
-                await _dbContext.Chats.AddAsync(chat);
-                await _dbContext.SaveChangesAsync();
-
-                return chat;
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new SlothException("Creating chat failed", ex);
-            }
         }
     }
 }

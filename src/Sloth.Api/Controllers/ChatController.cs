@@ -32,20 +32,26 @@ namespace Sloth.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateChat([FromBody] CreateChatRequest request)
+        public async Task<ChatDto> CreateChat([FromBody] CreateChatRequest request)
         {
-            var chatId = await _service.CreateChatAsync(request, HttpContext.GetCurrentUserId());
+            var userId = HttpContext.GetCurrentUserId();
 
-            return Ok(chatId);
+            var chatId = await _service.CreateChatAsync(request, userId);
+            var chatDto = await _service.GetChatByIdAsync(chatId, userId);
+
+            return chatDto;
         }
 
         [HttpPost]
         [Route("{chatId}/accept")]
-        public async Task<IActionResult> AcceptChat(Guid chatId, [FromBody] ChatActionRequest request)
+        public async Task<ChatDto> AcceptChat(Guid chatId, [FromBody] ChatActionRequest request)
         {
-            await _service.ConfirmChatAsync(chatId, HttpContext.GetCurrentUserId(), request.PublicKey);
+            var userId = HttpContext.GetCurrentUserId();
+            await _service.ConfirmChatAsync(chatId, userId, request.PublicKey);
 
-            return Ok();
+            var chatDto = await _service.GetChatByIdAsync(chatId, userId);
+
+            return chatDto;
         }
 
         [HttpPost]

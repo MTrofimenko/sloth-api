@@ -28,7 +28,9 @@ namespace Sloth.DB
         public static IServiceCollection AddSlothRepositories(this IServiceCollection services)
         {
             return services.AddTransient<IUserRepository, UserRepository>()
-                            .AddTransient<ISessionRefreshTokenRepository, SessionRefreshTokenRepository>();
+                            .AddTransient<ISessionRefreshTokenRepository, SessionRefreshTokenRepository>()
+                            .AddTransient<IChatMessageRepository, ChatMessageRepository>()
+                            .AddTransient<IChatRepository, ChatRepository>();
         }
     }
 }
