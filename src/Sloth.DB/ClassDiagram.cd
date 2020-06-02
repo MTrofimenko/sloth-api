@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sloth.DB.Models.ChatMemberSettings.ChatMemberDefSettingValue" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAA=</HashCode>
+      <FileName>Models\ChatMemberSettings\ChatMemberDefSettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatMemberSettings.ChatMemberSetting" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAEAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\ChatMemberSettings\ChatMemberSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatMemberSettings.ChatMemberSettingLookupValue" Collapsed="true">
+    <Position X="21.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgACBAAAA=</HashCode>
+      <FileName>Models\ChatMemberSettings\ChatMemberSettingLookupValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatMemberSettings.ChatMemberSettingValue" Collapsed="true">
+    <Position X="12.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAAAAQBAAAA=</HashCode>
+      <FileName>Models\ChatMemberSettings\ChatMemberSettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatSettings.ChatDefSettingValue" Collapsed="true">
+    <Position X="14.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAA=</HashCode>
+      <FileName>Models\ChatSettings\ChatDefSettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatSettings.ChatSetting" Collapsed="true">
+    <Position X="32.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAEAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\ChatSettings\ChatSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatSettings.ChatSettingLookupValue" Collapsed="true">
+    <Position X="37" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgACBAAAA=</HashCode>
+      <FileName>Models\ChatSettings\ChatSettingLookupValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatSettings.ChatSettingValue" Collapsed="true">
+    <Position X="19" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQBAAAQ=</HashCode>
+      <FileName>Models\ChatSettings\ChatSettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.Setting.SettingValue" Collapsed="true">
+    <Position X="13.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAABQAAAAAAAgAAAAgAAAAACAAAAA=</HashCode>
+      <FileName>Models\Setting\SettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.UserSettings.UserDefSettingValue" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAA=</HashCode>
+      <FileName>Models\UserSettings\UserDefSettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.UserSettings.UserSetting" Collapsed="true">
+    <Position X="25.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAEAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\UserSettings\UserSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.UserSettings.UserSettingLookupValue" Collapsed="true">
+    <Position X="28" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgACBAAAA=</HashCode>
+      <FileName>Models\UserSettings\UserSettingLookupValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.UserSettings.UserSettingValue" Collapsed="true">
+    <Position X="16.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQBAAAA=</HashCode>
+      <FileName>Models\UserSettings\UserSettingValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.BaseEntity" Collapsed="true">
+    <Position X="22.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.Chat" Collapsed="true">
+    <Position X="41.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAEAAAAAAAAAAAAAAQAAAAAAAAAAAAkAAAAAAA=</HashCode>
+      <FileName>Models\Chat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatMember" Collapsed="true">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAARAAAEAAAAAAAAAAAAAAwAAAAAAAgAAAAAAQAAAAQ=</HashCode>
+      <FileName>Models\ChatMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.ChatMessage" Collapsed="true">
+    <Position X="23.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAEAAAAAACAAAQAAAAAAQAAAAIAAIAAA=</HashCode>
+      <FileName>Models\ChatMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.File" Collapsed="true">
+    <Position X="30.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\File.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.SessionRefreshToken" Collapsed="true">
+    <Position X="34.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAEAAAAAgAAAAAAEAAAAAAAAABAAA=</HashCode>
+      <FileName>Models\SessionRefreshToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Models.User" Collapsed="true">
+    <Position X="39.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAACAAAAAAEAAAAAAAAAAAAAACAAAwAAAAAAg=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMemberSettings.ChatMemberDefSettingValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMemberSettings\ChatMemberDefSettingValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMemberSettings.ChatMemberSettingConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMemberSettings\ChatMemberSettingConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMemberSettings.ChatMemberSettingLookupValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMemberSettings\ChatMemberSettingLookupValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMemberSettings.ChatMemberSettingsExtension" Collapsed="true">
+    <Position X="47.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMemberSettings\ChatMemberSettingsExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMemberSettings.ChatMemberSettingValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMemberSettings\ChatMemberSettingValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatSettings.ChatDefSettingValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatSettings\ChatDefSettingValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatSettings.ChatSettingConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatSettings\ChatSettingConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatSettings.ChatSettingLookupValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatSettings\ChatSettingLookupValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatSettings.ChatSettingsExtension" Collapsed="true">
+    <Position X="51" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatSettings\ChatSettingsExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatSettings.ChatSettingValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatSettings\ChatSettingValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.UserSettings.UserDefSettingValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\UserSettings\UserDefSettingValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.UserSettings.UserSettingConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\UserSettings\UserSettingConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.UserSettings.UserSettingLookupValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\UserSettings\UserSettingLookupValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.UserSettings.UserSettingsExtension" Collapsed="true">
+    <Position X="49.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Configuration\UserSettings\UserSettingsExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Configuration.UserSettings.UserSettingValueConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\UserSettings\UserSettingValueConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMemberConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMemberConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.ChatMessageConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ChatMessageConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.SessionRefreshTokenConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\SessionRefreshTokenConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Configuration.UserConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\UserConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Repositories.Models.CreateChatMessageRequest" Collapsed="true">
+    <Position X="45.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAEAAAAAAAAgAAAAAAAAAAAAAIAAAAAQ=</HashCode>
+      <FileName>Repositories\Models\CreateChatMessageRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Repositories.BaseRepository" Collapsed="true">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\BaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.Repositories.ChatMessageRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ChatMessageRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Repositories.ChatRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAIAgAAAAAACAAAAACAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ChatRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.DB.Repositories.SessionRefreshTokenRepository" Collapsed="true">
+    <Position X="1.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAACEAAAAACAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\SessionRefreshTokenRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sloth.DB.Repositories.UserRepository" Collapsed="true">
+    <Position X="3.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAQAAAAAAAAEAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sloth.DB.Bootstrap" Collapsed="true">
+    <Position X="44" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQA=</HashCode>
+      <FileName>Bootstrap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.DB.SlothDbContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UEIABCAAAAAEAhABABAAGQACEAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>SlothDbContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Sloth.DB.Repositories.IChatMessageRepository" Collapsed="true">
+    <Position X="44" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IChatMessageRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sloth.DB.Repositories.IChatRepository" Collapsed="true">
+    <Position X="45.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAgAAAAAACAAAAACAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IChatRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sloth.DB.Repositories.ISessionRefreshTokenRepository" Collapsed="true">
+    <Position X="47.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAACEAAAAACAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ISessionRefreshTokenRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sloth.DB.Repositories.IUserRepository" Collapsed="true">
+    <Position X="51" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAQAAAAAAAAEAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sloth.DB.ISlothDbContext" Collapsed="true">
+    <Position X="49.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>0EIABCAAAAAEAlABABAAGQACAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>ISlothDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Sloth.DB.Models.Setting.SettingType" Collapsed="true">
+    <Position X="47.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQEAAIAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Setting\SettingType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Sloth.DB.Models.ChatMemberStatus" Collapsed="true">
+    <Position X="44" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAIAAAAgA=</HashCode>
+      <FileName>Models\ChatMemberStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Sloth.DB.Models.ChatStatus" Collapsed="true">
+    <Position X="45.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAIAAAAgA=</HashCode>
+      <FileName>Models\ChatStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sloth.Auth.TokenProvider.JwtClaimTypes" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QJESgSABAiAEiOCIkIIUQAQMAgDAAAECIBCAQAAAWAA=</HashCode>
+      <FileName>TokenProvider\JwtClaimTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.Auth.TokenProvider.JwtTokenProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAwAAA=</HashCode>
+      <FileName>TokenProvider\JwtTokenProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.Auth.Models.AuthResponse" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAIAAQAAAAAAA=</HashCode>
+      <FileName>Models\AuthResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.Auth.Models.IdentityModel" Collapsed="true">
+    <Position X="10.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.Auth.Models.RefreshModel" Collapsed="true">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RefreshModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.Auth.Models.RegisterModel" Collapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAg=</HashCode>
+      <FileName>Models\RegisterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.Auth.Models.SlothAuthenticationOptions" Collapsed="true">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAQAAAAAAAAAAAgAAEAAEAACgAAAAACAIAAAAAAAI=</HashCode>
+      <FileName>Models\SlothAuthenticationOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sloth.Auth.AuthProviders.NativeAuthProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQgAAAgAAAAQAAAAAABAIAAAAAIBAAABAAQIAAAAAQ=</HashCode>
+      <FileName>AuthProviders\NativeAuthProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.Auth.AuthService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAQAAAAAAQ=</HashCode>
+      <FileName>AuthServise.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sloth.Auth.Bootstrap" Collapsed="true">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bootstrap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Sloth.Auth.TokenProvider.ITokenProvider" Collapsed="true">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>TokenProvider\ITokenProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sloth.Auth.AuthProviders.IAuthProvider" Collapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAQ=</HashCode>
+      <FileName>AuthProviders\IAuthProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sloth.Auth.IAuthService" Collapsed="true">
+    <Position X="7" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAQ=</HashCode>
+      <FileName>IAuthServise.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
