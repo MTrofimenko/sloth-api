@@ -18,7 +18,7 @@ namespace Sloth.Api.Services
             _userRepository = userRepository;
         }
         public async Task<CurrentUser> GetCurrentUserAsync(Guid userId) {
-            User user = await _userRepository.GetUserByIdAsync(userId);
+            var user = await _userRepository.GetUserByIdAsync(userId);
             return _mapper.Map<CurrentUser>(user);
         }
     }

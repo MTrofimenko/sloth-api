@@ -83,7 +83,7 @@ namespace Sloth.Api
         {
             services
                 .AddTransient<IChatService, ChatService>()
-                .AddTransient<IChatMessageService, ChatMessageService>();
+                .AddTransient<IChatNameResolver, ChatNameResolver>();
         }
         private void AddAutoMapper(IServiceCollection services)
         {

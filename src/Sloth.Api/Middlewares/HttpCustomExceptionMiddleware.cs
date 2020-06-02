@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Sloth.Api.Exceptions;
+using Sloth.Common.Exceptions;
 
 namespace Sloth.Api.Middlewares
 {

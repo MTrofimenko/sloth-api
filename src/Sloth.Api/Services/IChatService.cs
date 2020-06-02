@@ -9,6 +9,7 @@ namespace Sloth.Api.Services
     {
         Task<Guid> CreateChatAsync(CreateChatRequest request, Guid userId);
         Task<IEnumerable<ChatDto>> GetChatsAsync(Guid userId);
+        Task<ChatDto> GetChatByIdAsync(Guid chatId, Guid userId);
         Task ConfirmChatAsync(Guid chatId, Guid userId, string publicKey);
         Task DeclineChatAsync(Guid chatId, Guid userId);
     }

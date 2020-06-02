@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sloth.Api.Exceptions
+namespace Sloth.Common.Exceptions
 {
     public class SlothException : Exception
     {

@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sloth.Api.Extensions;
 using Sloth.Api.Services;
 using Sloth.Auth.Models;
-using System.Threading.Tasks;
 
-namespace Sloth.Api
+namespace Sloth.Api.Controllers
 {
     [Authorize]
     [Route("api/user")]
