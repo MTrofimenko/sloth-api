@@ -11,4 +11,12 @@ namespace Sloth.Auth.AuthProviders
         Task LogoutAsync(Guid userId);
         Task<AuthResponse> RefreshAsync(RefreshModel model);
     }
+
+    public interface CopyOfIAuthProvider
+    {
+        Task<AuthResponse> LoginAsync(IdentityModel model);
+        Task<Guid> LogonAsync(RegisterModel model);
+        Task LogoutAsync(Guid userId);
+        Task<AuthResponse> RefreshAsync(RefreshModel model);
+    }
 }

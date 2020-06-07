@@ -11,7 +11,7 @@ namespace Sloth.Api.Configuration.AutoMapper
         {
             CreateMap<IdentityModel, User>();
             CreateMap<RegisterModel, User>();
-            CreateMap<User, CurrentUser>();
+            CreateMap<User, UserModel>();
 
             CreateMap<ChatMessage, ChatMessageDto>()
                 .ForMember(dest => dest.UserId, 
