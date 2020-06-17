@@ -12,5 +12,6 @@ namespace Sloth.DB.Repositories
         Task<User> GetUserByLoginAsync(string login);
         Task<bool> AnyByLoginAsync(string login);
         Task<Guid> AddAsync(User user);
+        Task<IEnumerable<User>> GetUsersByNameAsync(string namePart);
     }
 }

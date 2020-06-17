@@ -1,11 +1,13 @@
-﻿using Sloth.Auth.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sloth.Api.Models;
 
 namespace Sloth.Api.Services
 {
     public interface IUserService
     {
-        Task<CurrentUser> GetCurrentUserAsync(Guid userId);
+        Task<UserModel> GetCurrentUserAsync(Guid userId);
+        Task<IEnumerable<UserModel>> GetUsersByNameAsync(string namePart);
     }
 }

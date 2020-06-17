@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sloth.Api.Extensions;
+using Sloth.Api.Models;
 using Sloth.Api.Services;
-using Sloth.Auth.Models;
 
 namespace Sloth.Api.Controllers
 {
@@ -20,9 +21,15 @@ namespace Sloth.Api.Controllers
         }
 
         [HttpGet("current")]
-        public async Task<CurrentUser> GetCurrentUserAsync()
+        public async Task<UserModel> GetCurrentUserAsync()
         {
            return await _userService.GetCurrentUserAsync(HttpContext.GetCurrentUserId());
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<UserModel>> GetUsersAsync(string namePart)
+        {
+            return await _userService.GetUsersByNameAsync(namePart);
         }
     }
 }

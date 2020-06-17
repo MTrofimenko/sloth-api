@@ -65,6 +65,7 @@ namespace Sloth.DB.Repositories
         {
             var chat = await _dbContext.Chats
                 .Include(x => x.Members)
+                .ThenInclude(x => x.User)
                 .FirstOrDefaultAsync(x => x.Id == chatId);
 
             if (chat == null)
